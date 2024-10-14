@@ -1,6 +1,5 @@
 <script setup lang="ts">
-  import site from '~~/site'
-  const { github } = site
+  const { github }  = useAppConfig()
 
   definePageMeta({
     // layout: 'default',

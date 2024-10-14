@@ -2,28 +2,11 @@
   import type { Script } from '@unhead/schema'
   import checkDarkTheme from '@/composables/dark-color-scheme-check?raw'
 
-  import site from '~~/site'
-  // import image from '@/screenshots/image.jpg'
   import { fontUrls } from '@/utils/font'
 
   type TurboScript = Script & { once: true }
 
-  const link: any = [
-    // ...[
-    //   '/fonts/barlow-7cHpv4kjgoGqM7E_Ass52Hs.woff2',
-    //   '/fonts/firacode-uU9eCBsR6Z2vfE9aq3bL0fxyUs4tcw4W_D1sJVD7Ng.woff2',
-    //   '/fonts/barlow-7cHpv4kjgoGqM7E_DMs5.woff2',
-    // ].map(
-    //   (href) =>
-    //     ({
-    //       rel: 'preload',
-    //       as: 'font',
-    //       type: 'font/woff2',
-    //       crossorigin: '',
-    //       href,
-    //     } as const),
-    // ),
-  ]
+  const link:Object[] = []
   const noscript: any = []
 
   if (fontUrls.length) {
@@ -46,7 +29,7 @@
     )
   }
 
-  const { name, description, author } = site
+  const { name, description, author }  = useAppConfig()
 
   const route = useRoute()
   const theDescription = computed(

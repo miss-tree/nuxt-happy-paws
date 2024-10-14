@@ -3,22 +3,12 @@ import { resolve } from 'pathe'
 import presetIcons from '@unocss/preset-icons'
 import { bundledLanguages } from 'shiki'
 
-import site from './site'
-const {
-  name,
-  description,
-  url,
-  defaultLocale,
-  identity,
-  twitter,
-  trailingSlash,
-  titleSeparator,
-} = site
 
 export default defineNuxtConfig({
   extends: [
     './app-nuxt-tailwindcss-layer', // NavBar and Footer components
   ],
+
   // ssr: false,
   // devtools: { enabled: false }, // enabled by default, disable when using standalone Vue devtools when using standalone Vue devtools
 
@@ -61,6 +51,7 @@ export default defineNuxtConfig({
     '@nuxt/content',
     '@vueuse/nuxt',
     '@pinia/nuxt',
+    '@nuxtjs/i18n',
     // '@nuxtjs/html-validator',
     '@nuxt/image',
     '@vee-validate/nuxt',
@@ -231,19 +222,38 @@ export default defineNuxtConfig({
   // Used by all modules in the @nuxtjs/seo collection
   // https://nuxtseo.com/nuxt-seo/guides/configuring-modules
   site: {
-    url,
-    name,
-    description,
-    defaultLocale,
+    url:'https://happy-paws-with-nuxt-tailwindcss.netlify.app',
+    name: 'Happy Paws',
+    description: 'Adopt Your Fur Mate',
+    defaultLocale: 'zh',
     // https://nuxtseo.com/nuxt-seo/guides/setting-an-identity
-    identity,
-    twitter,
-    trailingSlash,
-    titleSeparator,
+    identity: {
+      type: 'Organization',
+    } as any,
+    twitter: '@vuedesigner',
+    trailingSlash: false,
+    titleSeparator: '|',
   },
+
   robots: {
     // https://nuxtseo.com/robots/api/config#blocknonseobots
     blockNonSeoBots: true,
+  },
+
+  i18n: {
+    locales: [
+      { code: 'en', file: 'en.json', name: 'English 🇺🇸' },
+      { code: 'zh', file: 'zh.json', name: '简体 中文' },
+    ], // 支持的语言
+    defaultLocale: 'zh', // 默认语言
+    langDir: 'locales', // 语言文件目录
+    lazy: true,
+    // fallbackLocale: 'zh',
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      alwaysRedirect: true
+    }
   },
   sitemap: {
     // https://nuxtseo.com/sitemap/guides/i18n#debugging-hreflang
@@ -264,6 +274,7 @@ export default defineNuxtConfig({
     // Remove strictNuxtContentPaths if using nuxt-content in documentDriven mode
     strictNuxtContentPaths: true,
   },
+
   ogImage: {
     // OG images and nuxtseo features can be previewed with nuxt-devtools during development. OG images can also be viewed using URL in this form - `/__og-image__/image/<path>/og.<extension>. For eg, https://happy-paws-with-nuxt-tailwindcss.netlify.app/__og-image__/image/og.png
     // fonts: ['Inter:400', 'Inter:700'],
@@ -273,6 +284,7 @@ export default defineNuxtConfig({
     // disable at a global level
     // runtimeCacheStorage: false,
   },
+
   linkChecker: {
     enabled: false,
     excludeLinks: ['https://twitter.com/vuedesigner'],
@@ -328,4 +340,6 @@ export default defineNuxtConfig({
       // ],
     },
   },
+
+  compatibilityDate: '2024-10-14',
 })

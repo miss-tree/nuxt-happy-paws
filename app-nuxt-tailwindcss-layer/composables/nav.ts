@@ -1,5 +1,6 @@
 import { computed } from 'vue'
-import site from '~~/site'
+// import site from '~~/site'
+const { nav }  = useAppConfig()
 
 export const useNav = () => {
   const routes = useRouter().getRoutes()
@@ -30,7 +31,7 @@ export const useNav = () => {
       }
     })
 
-  const navlinksFromConfig = site.nav
+  const navlinksFromConfig = nav
   // const navlinks = computed(() => navlinksFromRouter || navlinksFromConfig)
   // TODO: Use navlinksFromConfig if using dynamic routes, or customized nav-links
   const navlinks = computed(() => navlinksFromConfig || navlinksFromRouter)
