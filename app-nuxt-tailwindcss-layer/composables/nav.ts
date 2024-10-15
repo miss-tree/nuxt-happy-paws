@@ -35,21 +35,25 @@ export const useNav = () => {
   // const navlinks = computed(() => navlinksFromRouter || navlinksFromConfig)
   // TODO: Use navlinksFromConfig if using dynamic routes, or customized nav-links
   const navlinks = computed(() => navlinksFromConfig || navlinksFromRouter)
+  
+  const counter = useCookie('i18n_redirected')  
+  navlinks.value.map(d=>{
+    d.text = d[counter.value||'zh']
+  })
 
   const navlinksPrimary = computed(() => {
-    return navlinks.value.filter(
-      (navlink) => !navlink.type || navlink.type === 'primary',
-    )
+    return navlinks.value.filter((k) => !k.type || k.type === 'primary')
   })
 
   const navlinksSecondary = computed(() => {
-    return navlinks.value.filter((navlink) => navlink.type === 'secondary')
+    return navlinks.value.filter((m) => m.type === 'secondary')
   })
 
   const currentRoute = useRoute()
   const currentPath = computed(() => {
     return currentRoute.path
   })
+
 
   return {
     navlinks,

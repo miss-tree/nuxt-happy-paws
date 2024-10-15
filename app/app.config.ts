@@ -1,3 +1,5 @@
+import {list} from "./utils/navLinks"
+
 export default defineAppConfig({
   name: 'Happy Paws',
   description: 'Adopt Your Fur Mate',
@@ -12,29 +14,7 @@ export default defineAppConfig({
   twitter: '@vuedesigner',
   trailingSlash: false, // default
   titleSeparator: '|', // default
-  nav: [
-    { text: 'Home', link: '/', type: 'primary', icon: 'i-mdi-home' },
-    { text: 'Adopt Now', link: '/adopt', type: 'primary', icon: 'i-mdi-home' },
-    {
-      text: 'Donate',
-      link: '/quick-start',
-      type: 'secondary',
-      icon: 'i-mdi-home',
-    },
-    {
-      text: 'Articles',
-      link: '/articles',
-      type: 'primary',
-      icon: 'i-mdi-home',
-    },
-    { text: 'Blog', link: '/blog', type: 'primary', icon: 'i-mdi-home' },
-    {
-      text: 'Volunteer',
-      link: '/volunteer',
-      type: 'secondary',
-      icon: 'i-mdi-home',
-    },
-  ],
+  nav: list,
   ui: {
     button: {
       // Inspired by https://ui.nuxt.com/elements/button#preset

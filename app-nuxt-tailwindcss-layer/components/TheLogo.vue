@@ -5,7 +5,7 @@
     <h6
       class="text-primary-600 dark:text-primary-200 font-extrabold font-serif ml-2 mt-4 text-2xl"
     >
-      {{ $t('messages.general.title') }}
+      {{ $t('general.title') }}
     </h6>
   </NuxtLink>
 </template>

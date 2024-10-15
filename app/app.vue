@@ -1,9 +1,8 @@
 <script setup lang="ts">
-  // import site from '~~/site'
   import { heroImageUrl } from '@/utils/hero'
   import { primary, secondary } from '@/utils/colors'
   // import { useSiteConfig } from '#imports'
-  // const { name, logo, description, author, twitter } = site
+  const { locale } = useI18n()
   
   const { name, logo, description, author, twitter }  = useAppConfig()
   const fromBg = secondary

@@ -240,6 +240,7 @@ export default defineNuxtConfig({
     blockNonSeoBots: true,
   },
 
+  // https://i18n.nuxtjs.org/docs/getting-started/usage
   i18n: {
     locales: [
       { code: 'en', file: 'en.json', name: 'English 🇺🇸' },
@@ -248,7 +249,7 @@ export default defineNuxtConfig({
     defaultLocale: 'zh', // 默认语言
     langDir: 'locales', // 语言文件目录
     lazy: true,
-    // fallbackLocale: 'zh',
+    strategy: 'no_prefix', // "no_prefix" "prefix_except_default"
     detectBrowserLanguage: {
       useCookie: true,
       cookieKey: 'i18n_redirected',

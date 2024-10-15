@@ -22,7 +22,7 @@
     "format": "prettier --write \"**/*.{vue,js,jsx,cjs,mjs,ts,tsx,cts,mts,html,css,md,mdx,json}\" !public --ignore-path .gitignore"
   },
   "dependencies": {
-    "@nuxtjs/i18n'@nuxtjs/i18n'": "^8.5.5",
+    "@nuxtjs/i18n": "^8.5.5",
     "@pinia/nuxt": "^0.5.4",
     "@vee-validate/nuxt": "^4.13.2",
     "@vueuse/core": "^11.0.3",

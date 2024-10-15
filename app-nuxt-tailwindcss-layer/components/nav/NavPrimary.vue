@@ -11,6 +11,19 @@
       default: '/',
     },
   })
+  const { locale,setLocale } = useI18n()
+  const state = reactive({
+    switchLabel :locale.value=='zh'?'English':'中文'
+  })
+  const changeLanguage = ()=>{
+    if(locale.value=='zh'){
+        setLocale('en')
+        state.switchLabel = '中文'
+    }else{
+        setLocale('zh')
+        state.switchLabel = 'English'
+    }
+  }
 </script>
 
 <template>
@@ -26,18 +39,14 @@
         class="!rounded-lg"
       />
     </div>
-    <!-- <BaseButton
-      class="ml-3"
-      target="_blank"
-      to="https://vuedesigner.com"
+    <BaseButton
+      class="ml-3 py2"
       size="xl"
       color="secondary"
+      @click="changeLanguage"
     >
-      <span class="pl-2">Try Now</span>
-      <template #trailing>
-        <BaseIcon name="i-mdi-pine-tree" height="24px" />
-      </template>
-    </BaseButton> -->
+      <span class="px-2">{{state.switchLabel}}</span>
+    </BaseButton>
   </div>
 </template>
 
